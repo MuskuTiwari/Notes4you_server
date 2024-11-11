@@ -37,23 +37,30 @@ class AuthController {
       const ValidUser = await user.findOne({ email });
 
       if (!ValidUser) {
-        return next(errorHandler(404, "user not found"));
+        return next(errorHandler(404, "User not found"));
       }
       const validPassword = bcryptjs.compareSync(password, ValidUser.password);
 
       if (!validPassword) {
-        return next(errorHandler(401, "wrong credentials"));
+        return next(errorHandler(401, "Wrong credentials"));
       }
 
       const token = jwt.sign({ id: ValidUser._id }, process.env.JWT_SECRET);
 
       const { password: pass, ...rest } = ValidUser._doc;
 
-      res.cookie("access_token", token, { httpOnly: true }).status(200).json({
-        success: true,
-        message: "Login Successfull",
-        rest,
-      });
+      res
+        .cookie("access_token", token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "None",
+        })
+        .status(200)
+        .json({
+          success: true,
+          message: "Login successful",
+          user: rest,
+        });
     } catch (error) {
       next(error);
     }
