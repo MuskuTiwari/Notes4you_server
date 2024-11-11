@@ -1,13 +1,10 @@
+const errorHandler = (statusCode, message) => {
+  const error = new Error();
 
-export const errorHandler = (statusCode ,message) =>{
-  
-    const error = new Error()
-       
-    error.statusCode = statusCode
-      
-        error.message = message 
-      
-       return error
-    
-}
+  error.statusCode = statusCode;
 
+  error.message = message;
+
+  return error;
+};
+module.exports = errorHandler;
