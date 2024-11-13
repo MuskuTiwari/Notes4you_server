@@ -20,7 +20,7 @@ mongoose
 app.use(express.json());
 app.use(cookieParser());
 const allowedOrigins = [
-  "https://notes-4-you.netlify.app/", // Production URL
+  "https://notes-4-you.netlify.app", // Production URL
   "http://localhost:5173/", // Local frontend URL for development
   "http://localhost:5174", // Local frontend URL for development
 ];
