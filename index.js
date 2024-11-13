@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 const allowedOrigins = [
   "https://notes-4-you.netlify.app", // Production URL
+  "http://localhost:3000", // Local development URL
 ];
 
 app.use(
