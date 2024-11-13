@@ -19,10 +19,21 @@ mongoose
 
 app.use(express.json());
 app.use(cookieParser());
+const allowedOrigins = [
+  "https://notes-4-you.netlify.app", // Production URL
+  "http://localhost:5174", // Local frontend URL for development
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5174", // Local frontend URL
-    credentials: true, // Allow cookies to be sent
+    origin: function (origin, callback) {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
 
