@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5175", // Local frontend URL
+    origin: "https://notes-4-you.netlify.app", // Local frontend URL
     credentials: true, // Allow cookies to be sent
   })
 );
