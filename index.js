@@ -21,7 +21,11 @@ app.use(cookieParser());
 // CORS configuration
 app.use(
   cors({
-    origin: ["https://notes4youapp.netlify.app"],
+    origin: [
+      "https://notes4you-client.vercel.app",
+      "http://localhost:5174",
+      "http://localhost:5173",
+    ],
     methods: ["POST", "GET"],
     credentials: true,
   })
@@ -54,8 +58,5 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Export the app for Vercel
+module.exports = app;
