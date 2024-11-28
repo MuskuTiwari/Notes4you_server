@@ -19,23 +19,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 // CORS configuration
-// const allowedOrigins = [
-//   "http://localhost:5173", // Production URL
-//   "http://localhost:3000", // Local development URL
-// ];
-
-// app.use(
-//   cors({
-//     origin: function (origin, callback) {
-//       if (allowedOrigins.includes(origin) || !origin) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//     credentials: true,
-//   })
-// );
 app.use(
   cors({
     origin: ["https://notes4youapp.netlify.app"],
@@ -43,6 +26,14 @@ app.use(
     credentials: true,
   })
 );
+
+// Simple status endpoint
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is working!",
+  });
+});
 
 // Routes
 const authRouter = require("./routes/auth.route.js");
