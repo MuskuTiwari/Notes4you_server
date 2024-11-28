@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 // CORS configuration
 const allowedOrigins = [
-  "https://notes-4-you.netlify.app", // Production URL
+  "http://localhost:5173", // Production URL
   "http://localhost:3000", // Local development URL
 ];
 
