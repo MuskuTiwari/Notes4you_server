@@ -38,7 +38,7 @@ app.use(cookieParser());
 // );
 app.use(
   cors({
-    origin: [""],
+    origin: ["https://notes4you-client.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })
