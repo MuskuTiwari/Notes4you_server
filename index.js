@@ -19,20 +19,27 @@ app.use(express.json());
 app.use(cookieParser());
 
 // CORS configuration
-const allowedOrigins = [
-  "http://localhost:5173", // Production URL
-  "http://localhost:3000", // Local development URL
-];
+// const allowedOrigins = [
+//   "http://localhost:5173", // Production URL
+//   "http://localhost:3000", // Local development URL
+// ];
 
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (allowedOrigins.includes(origin) || !origin) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true,
+//   })
+// );
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (allowedOrigins.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: [""],
+    methods: ["POST", "GET"],
     credentials: true,
   })
 );
