@@ -22,8 +22,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      "https://notes4youapp.netlify.app",
-      "https://notes4you-client.vercel.app",
+      "https://note4youapp.netlify.app",
       "http://localhost:5174",
       "http://localhost:5173",
     ],
